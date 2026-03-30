@@ -7,3 +7,6 @@ vim.o.tabstop = 2
 vim.o.smartindent = true
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
+
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 6
