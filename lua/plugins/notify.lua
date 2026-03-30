@@ -6,7 +6,7 @@ return {
     notify.setup({
       stages = "fade_in_slide_out",
       timeout = 3000,
-      max_width = 50,
+      max_width = 100,
       background_colour = "#1a1b26",  -- tokyonight 배경
       icons = {
         ERROR = "✘",
@@ -17,7 +17,7 @@ return {
       },
       render = "compact",  -- 간결하게
       top_down = true,
-      minimum_width = 30,
+      minimum_width = 100,
       fps = 60,
     })
     
