@@ -12,18 +12,30 @@ return {
       if vim.lsp.config then
         -- Neovim 0.11+ (맥)
         if vim.fn.executable("clangd") == 1 then
-          vim.lsp.config("clangd", {
-            capabilities = capabilities,
-          })
+          vim.lsp.config("clangd", { capabilities = capabilities })
           vim.lsp.enable("clangd")
+        end
+        if vim.fn.executable("pyright") == 1 then
+          vim.lsp.config("pyright", { capabilities = capabilities })
+          vim.lsp.enable("pyright")
+        end
+        if vim.fn.executable("rust-analyzer") == 1 then
+          vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+          vim.lsp.enable("rust_analyzer")
         end
       else
         -- Neovim 0.10 (라즈베리파이)
         local ok_lsp, lspconfig = pcall(require, "lspconfig")
-        if ok_lsp and vim.fn.executable("clangd") == 1 then
-          lspconfig.clangd.setup({
-            capabilities = capabilities,
-          })
+        if ok_lsp then
+          if vim.fn.executable("clangd") == 1 then
+            lspconfig.clangd.setup({ capabilities = capabilities })
+          end
+          if vim.fn.executable("pyright") == 1 then
+            lspconfig.pyright.setup({ capabilities = capabilities })
+          end
+          if vim.fn.executable("rust-analyzer") == 1 then
+            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+          end
         end
       end
       
